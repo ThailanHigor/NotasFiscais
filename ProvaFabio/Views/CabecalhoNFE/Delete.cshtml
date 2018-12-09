@@ -1,0 +1,71 @@
+﻿@model ProvaFabio.Models.CabecalhoNFE
+
+@{
+    ViewBag.Title = "Deletar Nota Fiscal";
+}
+
+<h2>Deletar Nota Fiscal</h2>
+
+<h3>Deseja deletar este item?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Número da Nota
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumNF)
+        </dd>
+
+        <dt>
+            Tipo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoNFE)
+        </dd>
+
+        <dt>
+            Data de Emissão
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEmissao)
+        </dd>
+
+        <dt>
+            Data de Entrada
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntrada)
+        </dd>
+
+        <dt>
+            Hora de Entrada
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoraEntrada)
+        </dd>
+
+        <dt>
+           Razão Social
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedores.RazaoSocial)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-danger" /> 
+            @Html.ActionLink("Voltar", "Index",new { },new {@class="btn btn-info" })
+        </div>
+    }
+</div>

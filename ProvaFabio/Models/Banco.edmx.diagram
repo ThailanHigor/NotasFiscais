@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dab0646439d44429bdf727614be6bea2" Name="Diagram1">
+        <EntityTypeShape EntityType="ProvaFabioModel.CabecalhoNFE" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="ProvaFabioModel.Clientes" Width="1.5" PointX="5.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ProvaFabioModel.CorpoNFE" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="ProvaFabioModel.Fornecedores" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="ProvaFabioModel.Grupo" Width="1.5" PointX="0.75" PointY="1.875" />
+        <EntityTypeShape EntityType="ProvaFabioModel.Produtos" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="ProvaFabioModel.CabecalhoNFE_Fornecedores" />
+        <AssociationConnector Association="ProvaFabioModel.CorpoNFE_CabecalhoNFE" />
+        <AssociationConnector Association="ProvaFabioModel.CorpoNFE_Produtos" />
+        <AssociationConnector Association="ProvaFabioModel.Produtos_Grupo" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

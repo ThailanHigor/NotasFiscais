@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ProvaFabio.Models.CorpoNFE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Nota Fiscal: @ViewBag.idNFE.NumNF</h2>
+<h4>Tipo da Nota: @(ViewBag.idNFE.TipoNFE == "S" ? "Saida" : "Entrada" )</h4>
+<p style="margin-top:40px;margin-bottom:20px;">
+    <a href="/CorpoNFE/AdicionarProdutos/@ViewBag.idNFE.Id" class="btn btn-success">Adicionar Produto</a>
+    <a href="/CabecalhoNFE/index/" class="btn btn-primary">Voltar</a>
+</p>
+
+
+<h4 >Produtos</h4>
+<table class="table">
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Descrição
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </th>
+        <th>
+            Custo Unitário
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IPI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ICMS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISS)
+        </th>
+        <th>
+            Valor Total
+        </th>
+
+
+        <th>Ações</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produtos.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Produtos.Descricao)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustoUnit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ICMS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ISS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+
+            <td>
+                @Html.ActionLink("Remover", "Delete", "CorpoNFE", new { id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

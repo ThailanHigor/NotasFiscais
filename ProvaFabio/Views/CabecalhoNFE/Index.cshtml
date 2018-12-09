@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProvaFabio.Models.CabecalhoNFE>
+
+@{
+    ViewBag.Title = "Notas Fiscais";
+}
+
+<h2 style="margin-bottom: 40px;">Notas Fiscais</h2>
+
+<p>
+    <a href="/CabecalhoNFE/Create" class="btn btn-success">Nova Nota</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nota Fiscal
+        </th>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Data de Emissão
+        </th>
+        <th>
+            Data de Entrada
+        </th>
+        <th>
+            Razão Social
+        </th>
+        <th>Ações</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumNF)
+        </td>
+        <td>
+            @(item.TipoNFE == "E" ? "Entrada" : "Saida")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEmissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntrada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fornecedores.RazaoSocial)
+        </td>
+        <td>
+            <a href="/CabecalhoNFE/Edit/@item.Id" class="btn btn-primary">Editar</a>
+            <a href="/CabecalhoNFE/Delete/@item.Id" class="btn btn-danger">Deletar</a>
+            <a href="/CabecalhoNFE/Produtos/@item.Id" class="btn btn-success"> Produtos</a>
+            <a href="/CabecalhoNFE/LancaNota/@item.Id" class="btn btn-warning"> Emitir Nota</a>
+        </td>
+    </tr>
+}
+
+</table>

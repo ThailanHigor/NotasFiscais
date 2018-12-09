@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StoreContainer" CdmEntityContainer="ProvaFabioEntities">
+    <EntitySetMapping Name="CabecalhoNFE">
+      <EntityTypeMapping TypeName="ProvaFabioModel.CabecalhoNFE">
+        <MappingFragment StoreEntitySet="CabecalhoNFE">
+          <ScalarProperty Name="HoraEntrada" ColumnName="HoraEntrada" />
+          <ScalarProperty Name="DataEntrada" ColumnName="DataEntrada" />
+          <ScalarProperty Name="DataEmissao" ColumnName="DataEmissao" />
+          <ScalarProperty Name="TipoNFE" ColumnName="TipoNFE" />
+          <ScalarProperty Name="Id_for" ColumnName="Id_for" />
+          <ScalarProperty Name="NumNF" ColumnName="NumNF" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="ProvaFabioModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="RG" ColumnName="RG" />
+          <ScalarProperty Name="CPF" ColumnName="CPF" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CorpoNFE">
+      <EntityTypeMapping TypeName="ProvaFabioModel.CorpoNFE">
+        <MappingFragment StoreEntitySet="CorpoNFE">
+          <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+          <ScalarProperty Name="ISS" ColumnName="ISS" />
+          <ScalarProperty Name="ICMS" ColumnName="ICMS" />
+          <ScalarProperty Name="IPI" ColumnName="IPI" />
+          <ScalarProperty Name="CustoUnit" ColumnName="CustoUnit" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="Id_prod" ColumnName="Id_prod" />
+          <ScalarProperty Name="NumNFE" ColumnName="NumNFE" />
+          <ScalarProperty Name="Id_NFE" ColumnName="Id_NFE" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fornecedores">
+      <EntityTypeMapping TypeName="ProvaFabioModel.Fornecedores">
+        <MappingFragment StoreEntitySet="Fornecedores">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+          <ScalarProperty Name="Contato" ColumnName="Contato" />
+          <ScalarProperty Name="CEP" ColumnName="CEP" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+          <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+          <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+          <ScalarProperty Name="InscEstadual" ColumnName="InscEstadual" />
+          <ScalarProperty Name="CNPJ" ColumnName="CNPJ" />
+          <ScalarProperty Name="RazaoSocial" ColumnName="RazaoSocial" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupo">
+      <EntityTypeMapping TypeName="ProvaFabioModel.Grupo">
+        <MappingFragment StoreEntitySet="Grupo">
+          <ScalarProperty Name="Grupo1" ColumnName="Grupo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Produtos">
+      <EntityTypeMapping TypeName="ProvaFabioModel.Produtos">
+        <MappingFragment StoreEntitySet="Produtos">
+          <ScalarProperty Name="OBS" ColumnName="OBS" />
+          <ScalarProperty Name="CustoAtu" ColumnName="CustoAtu" />
+          <ScalarProperty Name="CustoIni" ColumnName="CustoIni" />
+          <ScalarProperty Name="Quantidade" ColumnName="Quantidade" />
+          <ScalarProperty Name="UN" ColumnName="UN" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProvaFabioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProvaFabioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CabecalhoNFE" EntityType="ProvaFabioModel.CabecalhoNFE" />
+    <EntitySet Name="Clientes" EntityType="ProvaFabioModel.Clientes" />
+    <EntitySet Name="CorpoNFE" EntityType="ProvaFabioModel.CorpoNFE" />
+    <EntitySet Name="Fornecedores" EntityType="ProvaFabioModel.Fornecedores" />
+    <EntitySet Name="Grupo" EntityType="ProvaFabioModel.Grupo" />
+    <EntitySet Name="Produtos" EntityType="ProvaFabioModel.Produtos" />
+    <AssociationSet Name="CabecalhoNFE_Fornecedores" Association="ProvaFabioModel.CabecalhoNFE_Fornecedores">
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+      <End Role="CabecalhoNFE" EntitySet="CabecalhoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="CorpoNFE_CabecalhoNFE" Association="ProvaFabioModel.CorpoNFE_CabecalhoNFE">
+      <End Role="CabecalhoNFE" EntitySet="CabecalhoNFE" />
+      <End Role="CorpoNFE" EntitySet="CorpoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="CorpoNFE_Produtos" Association="ProvaFabioModel.CorpoNFE_Produtos">
+      <End Role="Produtos" EntitySet="Produtos" />
+      <End Role="CorpoNFE" EntitySet="CorpoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="Produtos_Grupo" Association="ProvaFabioModel.Produtos_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Produtos" EntitySet="Produtos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CabecalhoNFE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumNF" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="Id_for" Type="Int32" />
+    <Property Name="TipoNFE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="DataEmissao" Type="DateTime" Precision="0" />
+    <Property Name="DataEntrada" Type="DateTime" Precision="0" />
+    <Property Name="HoraEntrada" Type="Time" Precision="7" />
+    <NavigationProperty Name="Fornecedores" Relationship="ProvaFabioModel.CabecalhoNFE_Fornecedores" FromRole="CabecalhoNFE" ToRole="Fornecedores" />
+    <NavigationProperty Name="CorpoNFE" Relationship="ProvaFabioModel.CorpoNFE_CabecalhoNFE" FromRole="CabecalhoNFE" ToRole="CorpoNFE" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CPF" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="RG" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Endereco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Bairro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cidade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CEP" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CorpoNFE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_NFE" Type="Int32" />
+    <Property Name="NumNFE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="Id_prod" Type="Int32" />
+    <Property Name="Quantidade" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="CustoUnit" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="IPI" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ICMS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ISS" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="ValorTotal" Type="Decimal" Precision="13" Scale="2" />
+    <NavigationProperty Name="CabecalhoNFE" Relationship="ProvaFabioModel.CorpoNFE_CabecalhoNFE" FromRole="CorpoNFE" ToRole="CabecalhoNFE" />
+    <NavigationProperty Name="Produtos" Relationship="ProvaFabioModel.CorpoNFE_Produtos" FromRole="CorpoNFE" ToRole="Produtos" />
+  </EntityType>
+  <EntityType Name="Fornecedores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazaoSocial" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CNPJ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="InscEstadual" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Endereco" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Bairro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Cidade" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="CEP" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="Contato" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CabecalhoNFE" Relationship="ProvaFabioModel.CabecalhoNFE_Fornecedores" FromRole="Fornecedores" ToRole="CabecalhoNFE" />
+  </EntityType>
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grupo1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Produtos" Relationship="ProvaFabioModel.Produtos_Grupo" FromRole="Grupo" ToRole="Produtos" />
+  </EntityType>
+  <EntityType Name="Produtos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Id_Grupo" Type="Int32" />
+    <Property Name="Descricao" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="UN" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Quantidade" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="CustoIni" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="CustoAtu" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="OBS" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CorpoNFE" Relationship="ProvaFabioModel.CorpoNFE_Produtos" FromRole="Produtos" ToRole="CorpoNFE" />
+    <NavigationProperty Name="Grupo" Relationship="ProvaFabioModel.Produtos_Grupo" FromRole="Produtos" ToRole="Grupo" />
+  </EntityType>
+  <Association Name="CabecalhoNFE_Fornecedores">
+    <End Type="ProvaFabioModel.Fornecedores" Role="Fornecedores" Multiplicity="0..1" />
+    <End Type="ProvaFabioModel.CabecalhoNFE" Role="CabecalhoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CabecalhoNFE">
+        <PropertyRef Name="Id_for" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CorpoNFE_CabecalhoNFE">
+    <End Type="ProvaFabioModel.CabecalhoNFE" Role="CabecalhoNFE" Multiplicity="0..1" />
+    <End Type="ProvaFabioModel.CorpoNFE" Role="CorpoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CabecalhoNFE">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CorpoNFE">
+        <PropertyRef Name="Id_NFE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CorpoNFE_Produtos">
+    <End Type="ProvaFabioModel.Produtos" Role="Produtos" Multiplicity="0..1" />
+    <End Type="ProvaFabioModel.CorpoNFE" Role="CorpoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produtos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CorpoNFE">
+        <PropertyRef Name="Id_prod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Produtos_Grupo">
+    <End Type="ProvaFabioModel.Grupo" Role="Grupo" Multiplicity="0..1" />
+    <End Type="ProvaFabioModel.Produtos" Role="Produtos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produtos">
+        <PropertyRef Name="Id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

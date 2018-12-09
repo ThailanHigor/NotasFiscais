@@ -1,0 +1,293 @@
+﻿@model IEnumerable<ProvaFabio.Models.CabecalhoNFE>
+
+@{
+    ViewBag.Title = "Notas Fiscais";
+}
+
+<style>
+
+    .linha1 {
+        margin-top: 57px;
+        height: 48px;
+        justify-content: flex-end;
+        border: 1px solid black;
+        display: flex;
+    }
+
+    .coluna {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .linha2 {
+        height: 155px;
+        justify-content: flex-end;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        display: flex;
+        padding: 5px;
+    }
+
+    .coluna1 {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .coluna2 {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .coluna3 {
+        align-items: flex-start;
+        margin-top: 16px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .linha3 {
+        height: 50px;
+        justify-content: flex-end;
+        display: flex;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+    }
+
+    .coluna4 {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    p {
+        text-align: center;
+        font-weight: 600;
+    }
+</style>
+
+<div class="row linha1">
+    <div class="col-md-4 coluna">
+
+        <p class="txt-valor" style="    font-size: 21px;
+    margin-top: 12px;">Nota Fiscal:@ViewBag.cabecalho.NumNF</p>
+
+</div>
+
+</div>
+
+<div class="row linha2">
+    <div class="col-md-3 coluna1">
+        <p>EMITENTE</p>
+        <div style="    border: 1px solid black;
+    width: 56%;
+    height: 68%;">
+
+        </div>
+
+    </div>
+    <div class="col-md-2 coluna2">
+        <p>Razão social</p>
+        <p>Endereço</p>
+        <p>Bairro</p>
+        <p>Municipio</p>
+        <p>CEP</p>
+
+    </div>
+    <div class="col-md-3 coluna2">
+        <p>@ViewBag.fornecedor.RazaoSocial</p>
+        <p>@ViewBag.fornecedor.Endereco</p>
+        <p>@ViewBag.fornecedor.Bairro</p>
+        <p>@ViewBag.fornecedor.Cidade</p>
+        <p>@ViewBag.fornecedor.CEP</p>
+
+    </div>
+    <div class="col-md-4 coluna3">
+
+        <div style="    display: flex; margin-right:100px;    align-items: center;
+">
+                <div style=" border: 1px solid; padding: 0px;padding: 3px;    width: 23px;
+    height: 28px;    margin-right: 9px;
+    text-align: center;">@(ViewBag.cabecalho.TipoNFE == "E" ? "X" : " ") </div>
+                <span>Entrada</span>
+
+        </div>
+        <div style=" display: flex;    align-items: center;
+">
+
+            <div style="border: 1px solid;
+
+                    margin-right: 9px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 23px;
+                    height: 28px;
+                    text-align: center;">
+                @(ViewBag.cabecalho.TipoNFE == "S" ? "X" : " ")
+            </div>
+
+            <span>Saida</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row linha3">
+    <div class="col-md-6 coluna4" style="border-right: 1px solid black;">
+        <p>CNPJ: <span>@ViewBag.fornecedor.CNPJ</span></p>
+
+
+    </div>
+    <div class="col-md-6 coluna4">
+        <p>INSCRIÇÃO ESTADUAL: <span>@ViewBag.fornecedor.InscEstadual</span></p>
+
+    </div>
+
+</div>
+
+<div class="row linha3">
+    <div class="col-md-4 coluna4" style="border-right: 1px solid black;">
+        <p>DATA EMISSÃO: <span>@ViewBag.cabecalho.DataEmissao.ToShortDateString()</span></p>
+
+
+    </div>
+    <div class="col-md-4 coluna4" style="border-right: 1px solid black;">
+        <p>DATA SAIDA/ENTRADA: <span>@ViewBag.cabecalho.DataEntrada.ToShortDateString()</span></p>
+
+    </div>
+    <div class="col-md-4 coluna4">
+        <p>HORA ENTRADA: <span>@ViewBag.cabecalho.HoraEntrada</span></p>
+
+    </div>
+</div>
+<div class="row " style="    height: 50px;
+    justify-content: flex-start;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    ">
+    <p style="font-size:17px;margin-left:13px;font-weight:1000">Dados dos Produtos</p>
+</div>
+
+
+<div class="row linha3">
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>Codigo</p>
+
+    </div>
+    <div class="col-md-5 coluna4" style="border-right: 1px solid black;">
+        <p>Descrição dos produtos</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>Classificação Fiscal</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>OST</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>U.M</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>QTD</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>VALOR UNITÁRIO</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>VALOR TOTAL</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>ICMS</p>
+
+    </div>
+    <div class="col-md-2 coluna4" style="border-right: 1px solid black;">
+        <p>IPI</p>
+
+    </div>
+    <div class="col-md-2 coluna4">
+        <p>ISS</p>
+
+    </div>
+</div>
+
+
+@{ decimal total = 0 ;}
+@foreach (var p in ViewBag.produtosNota)
+{
+    total = total + Convert.ToDecimal(p.ValorTotal);
+    <div class="row linha3">
+        <div class="col-md-2 coluna4">
+            <p>@p.Produtos.Codigo</p>
+
+        </div>
+        <div class="col-md-5 coluna4">
+            <p>@p.Produtos.Descricao</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p> - </p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p> - </p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.Produtos.UN</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.Quantidade</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.CustoUnit</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.ValorTotal</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.ICMS%</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.IPI%</p>
+
+        </div>
+        <div class="col-md-2 coluna4">
+            <p>@p.ISS%</p>
+
+        </div>
+    </div>
+}
+
+
+<div class="row linha3">
+    <div class="col-md-6 coluna4" style=" align-items: flex-end;">
+        <p>Valor Total: @total<span></span></p>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,83 @@
+﻿@model ProvaFabio.Models.CabecalhoNFE
+
+@{
+    ViewBag.Title = "Nova Nota Fiscal";
+}
+
+<h2>Nova Nota Fiscal</h2>
+
+<div>
+    @Html.ActionLink("Voltar", "Index",new { },new {@class="btn btn-info" })
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2" for="NumNF">Número da Nota</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumNF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumNF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="Id_for">Fornecedor</label>
+            <div class="col-md-10">
+                @Html.DropDownList("Id_for", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Id_for, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="TipoNFE">Tipo</label>
+            <div class="col-md-10">
+                <select name="TipoNFE" class="form-control">
+                    <option value="E">Entrada</option>
+                    <option value="S">Saida</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.TipoNFE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="DataEmissao">Data de Emissão</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataEmissao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataEmissao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="DataEntrada">Data de Entrada</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataEntrada, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataEntrada, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2" for="HoraEntrada">Hora de Entrada</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoraEntrada, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoraEntrada, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar" class="btn btn-success" style="width:100%;" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

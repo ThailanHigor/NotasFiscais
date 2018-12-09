@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CabecalhoNFE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumNF" Type="varchar" MaxLength="9" />
+    <Property Name="Id_for" Type="int" />
+    <Property Name="TipoNFE" Type="varchar" MaxLength="1" />
+    <Property Name="DataEmissao" Type="date" />
+    <Property Name="DataEntrada" Type="date" />
+    <Property Name="HoraEntrada" Type="time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="varchar" MaxLength="40" />
+    <Property Name="CPF" Type="varchar" MaxLength="15" />
+    <Property Name="RG" Type="varchar" MaxLength="15" />
+    <Property Name="Endereco" Type="varchar" MaxLength="40" />
+    <Property Name="Bairro" Type="varchar" MaxLength="20" />
+    <Property Name="Cidade" Type="varchar" MaxLength="30" />
+    <Property Name="Estado" Type="varchar" MaxLength="2" />
+    <Property Name="CEP" Type="varchar" MaxLength="9" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CorpoNFE">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_NFE" Type="int" />
+    <Property Name="NumNFE" Type="varchar" MaxLength="9" />
+    <Property Name="Id_prod" Type="int" />
+    <Property Name="Quantidade" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="CustoUnit" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="IPI" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="ICMS" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="ISS" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="ValorTotal" Type="decimal" Precision="13" Scale="2" />
+  </EntityType>
+  <EntityType Name="Fornecedores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RazaoSocial" Type="varchar" MaxLength="40" />
+    <Property Name="CNPJ" Type="varchar" MaxLength="15" />
+    <Property Name="InscEstadual" Type="varchar" MaxLength="15" />
+    <Property Name="Endereco" Type="varchar" MaxLength="40" />
+    <Property Name="Bairro" Type="varchar" MaxLength="20" />
+    <Property Name="Cidade" Type="varchar" MaxLength="30" />
+    <Property Name="Estado" Type="varchar" MaxLength="2" />
+    <Property Name="CEP" Type="varchar" MaxLength="9" />
+    <Property Name="Contato" Type="varchar" MaxLength="40" />
+    <Property Name="Telefone" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Grupo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grupo" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Produtos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Codigo" Type="varchar" MaxLength="10" />
+    <Property Name="Id_Grupo" Type="int" />
+    <Property Name="Descricao" Type="varchar" MaxLength="40" />
+    <Property Name="UN" Type="varchar" MaxLength="2" />
+    <Property Name="Quantidade" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="CustoIni" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="CustoAtu" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="OBS" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <Association Name="CabecalhoNFE_Fornecedores">
+    <End Role="Fornecedores" Type="Self.Fornecedores" Multiplicity="0..1" />
+    <End Role="CabecalhoNFE" Type="Self.CabecalhoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fornecedores">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CabecalhoNFE">
+        <PropertyRef Name="Id_for" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CorpoNFE_CabecalhoNFE">
+    <End Role="CabecalhoNFE" Type="Self.CabecalhoNFE" Multiplicity="0..1" />
+    <End Role="CorpoNFE" Type="Self.CorpoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CabecalhoNFE">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CorpoNFE">
+        <PropertyRef Name="Id_NFE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CorpoNFE_Produtos">
+    <End Role="Produtos" Type="Self.Produtos" Multiplicity="0..1" />
+    <End Role="CorpoNFE" Type="Self.CorpoNFE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Produtos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CorpoNFE">
+        <PropertyRef Name="Id_prod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Produtos_Grupo">
+    <End Role="Grupo" Type="Self.Grupo" Multiplicity="0..1" />
+    <End Role="Produtos" Type="Self.Produtos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Produtos">
+        <PropertyRef Name="Id_Grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreContainer">
+    <EntitySet Name="CabecalhoNFE" EntityType="Self.CabecalhoNFE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CorpoNFE" EntityType="Self.CorpoNFE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Fornecedores" EntityType="Self.Fornecedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grupo" EntityType="Self.Grupo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Produtos" EntityType="Self.Produtos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="CabecalhoNFE_Fornecedores" Association="Self.CabecalhoNFE_Fornecedores">
+      <End Role="Fornecedores" EntitySet="Fornecedores" />
+      <End Role="CabecalhoNFE" EntitySet="CabecalhoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="CorpoNFE_CabecalhoNFE" Association="Self.CorpoNFE_CabecalhoNFE">
+      <End Role="CabecalhoNFE" EntitySet="CabecalhoNFE" />
+      <End Role="CorpoNFE" EntitySet="CorpoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="CorpoNFE_Produtos" Association="Self.CorpoNFE_Produtos">
+      <End Role="Produtos" EntitySet="Produtos" />
+      <End Role="CorpoNFE" EntitySet="CorpoNFE" />
+    </AssociationSet>
+    <AssociationSet Name="Produtos_Grupo" Association="Self.Produtos_Grupo">
+      <End Role="Grupo" EntitySet="Grupo" />
+      <End Role="Produtos" EntitySet="Produtos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

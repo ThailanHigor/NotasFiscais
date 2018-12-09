@@ -1,0 +1,82 @@
+﻿@model ProvaFabio.Models.Produtos
+
+@{
+    ViewBag.Title = "Detalhes do Produto";
+}
+
+<h2>Detalhes do Produto</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Código
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            Descrição
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+
+        <dt>
+            Custo Inicial
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoIni)
+        </dd>
+
+        <dt>
+            Custo Atual
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoAtu)
+        </dd>
+
+        <dt>
+            Observações
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OBS)
+        </dd>
+
+        <dt>
+            Grupo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grupo.Grupo1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id },new { @class="btn btn-warning"}) 
+    @Html.ActionLink("Voltar", "Index", new { },new {@class="btn btn-info" })
+</p>

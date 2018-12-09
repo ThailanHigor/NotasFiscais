@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ProvaFabio.Models.Fornecedores>
+
+@{
+    ViewBag.Title = "Fornecedores";
+}
+
+<h2 style="margin-bottom:40px;">Fornecedores</h2>
+
+<p>
+    @Html.ActionLink("Novo Fornecedor", "Create", new { },new {@class="btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Razão Social
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </th>
+        <th>
+            Inscrição Estadual
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CEP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>Ações</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RazaoSocial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNPJ)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InscEstadual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CEP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id },new {@class="btn btn-warning" }) 
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Deletar", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

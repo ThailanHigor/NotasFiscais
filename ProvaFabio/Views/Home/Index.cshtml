@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    .card-home {
+        flex-direction: row;
+        background: #f57900;
+        border-radius: 7px;
+        display: flex;
+        width: 200px;
+        height: 91px;
+        box-shadow: 3px 6px 12px -1px rgba(0,0,0,0.26);
+    }
+    .box-foto {
+        color: white;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width:39%;
+
+    }
+    .box-valor {
+        display: flex;
+        border-left: 2px solid white;
+        margin-left: 14px;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+    }
+    .txt-valor {
+   
+        font-size: 31px;
+        color: white;
+        text-shadow: 2px 2px 2px rgb(0, 0, 0);
+
+    }
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
+<div class="jumbotron" style="    flex-direction: row;     background-color: #f57900;;
+    display: flex;"
+    justify-content: space-between;">
+    <img src="~/Content/images/bill.svg" />
+    <div style="    margin-left: 20px;">
+        <h2>Notas Fiscais 4.0</h2>
+
+        <p class="lead">Sistema de notas fiscais desenvolvido para aula do Fabio </p>
+      
+    </div>
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4 card-home">
+        <div class="box-foto">
+            <img src="~/Content/images/clientes.svg" style="height: 56%;" />
+            <p style="margin-bottom: 0px;">Clientes</p>
+        </div>
+
+        <div class="box-valor">
+            <p class="txt-valor">@ViewBag.Clientes</p>
+        </div>
+    </div>
+    <div class="col-md-4 card-home">
+        <div class="box-foto">
+            <img src="~/Content/images/list.svg" style="height: 56%;" />
+            <p style="margin-bottom: 0px;">Grupos</p>
+        </div>
+
+        <div class="box-valor">
+            <p class="txt-valor">@ViewBag.Grupos</p>
+        </div>
+    </div>
+    <div class="col-md-4 card-home">
+        <div class="box-foto">
+            <img src="~/Content/images/produto.svg" style="height: 56%;" />
+            <p style="margin-bottom: 0px;">Produtos</p>
+        </div>
+
+        <div class="box-valor">
+            <p class="txt-valor">@ViewBag.Produtos</p>
+        </div>
+    </div>
+    <div class="col-md-4 card-home">
+        <div class="box-foto">
+            <img src="~/Content/images/fornecedor.svg" style="height: 56%;" />
+            <p style="margin-bottom: 0px;">Fornecedores</p>
+        </div>
+
+        <div class="box-valor">
+            <p class="txt-valor">@ViewBag.Fornecedores</p>
+        </div>
+    </div>
+    <div class="col-md-4 card-home">
+        <div class="box-foto">
+            <img src="~/Content/images/receipt.svg" style="height: 56%;" />
+            <p style="margin-bottom: 0px;">Notas</p>
+        </div>
+
+        <div class="box-valor">
+            <p class="txt-valor">@ViewBag.Notas</p>
+        </div>
+    </div>
+</div>

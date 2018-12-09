@@ -1,0 +1,106 @@
+﻿@model ProvaFabio.Models.Fornecedores
+
+@{
+    ViewBag.Title = "Detalhes do Fornecedor";
+}
+
+<h2>Detalhes do Fornecedor</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Razão Social
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazaoSocial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNPJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNPJ)
+        </dd>
+
+        <dt>
+            Inscrição Estadual
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InscEstadual)
+        </dd>
+
+        <dt>
+            Endereço
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id },new {@class="btn btn-warning" }) 
+    @Html.ActionLink("Voltar", "Index", new { },new {@class="btn btn-info" })
+</p>
